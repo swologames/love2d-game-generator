@@ -25,6 +25,47 @@ You are a specialized UI development agent for Love2D games. Your primary focus 
 4. **Accessibility**: Ensure UI is readable and usable (font sizes, contrast)
 5. **Performance**: UI should not impact game performance
 
+## CRITICAL: File Size & Componentization Rules
+
+> ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
+
+### Hard File Size Limits
+- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
+- **MAXIMUM 200 lines** only allowed for top-level scene/menu orchestrators and only when doing nothing but wiring components together.
+- Any file approaching 100 lines should be reviewed for potential extraction.
+
+### Mandatory Componentization
+- **One UI component per file.** `Button.lua`, `Slider.lua`, `HealthBar.lua` — never combine.
+- Menus are orchestrators that `require` individual components — they do not contain component logic themselves.
+- Examples of mandatory splits:
+  - `ui/Button.lua` — clickable button only
+  - `ui/HealthBar.lua` — health display only
+  - `ui/ScoreDisplay.lua` — score display only
+  - `ui/PauseMenu.lua` — layout + wiring only (delegates to Button, Slider, etc.)
+  - Never define multiple components in one file
+
+### Required File Architecture Pattern
+```
+src/ui/
+  HUD.lua               -- <60 lines: requires and positions HUD elements
+  PauseMenu.lua         -- <80 lines: menu layout, requires Button/Slider
+  Button.lua            -- <80 lines: button logic only
+  Slider.lua            -- <80 lines: slider logic only
+  HealthBar.lua         -- <60 lines: health bar only
+  ScoreDisplay.lua      -- <50 lines: score display only
+```
+
+### When Implementing Any Feature
+1. **Before writing a single line** — identify which file(s) the logic belongs in.
+2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+3. **Never add a component's logic into a parent menu/HUD file.**
+4. **Prefer 10 small focused files over 1 large file** every time.
+
+### Refactoring Triggers (do this proactively)
+- File exceeds 100 lines → split into sub-components
+- A menu file contains drawing logic → extract to a component file
+- A function is longer than 30 lines → extract helper functions
+
 ## Implementation Guidelines
 
 ### UI Component Structure

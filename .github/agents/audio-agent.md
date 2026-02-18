@@ -27,6 +27,45 @@ You are a specialized audio programming agent for Love2D games. Your primary foc
 4. **Responsiveness**: Sound effects should trigger immediately with actions
 5. **Balance**: Music and SFX should complement, not compete
 
+## CRITICAL: File Size & Componentization Rules
+
+> ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
+
+### Hard File Size Limits
+- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
+- Any file approaching 100 lines should be reviewed for potential extraction.
+
+### Mandatory Componentization
+- **One audio concern per file.** Music playback and SFX pooling are different responsibilities.
+- Examples of mandatory splits:
+  - `MusicManager.lua` — music tracks, crossfade, looping only
+  - `SFXManager.lua` — sound effect triggering and pooling only
+  - `AudioMixer.lua` — volume control, master/channel gains only
+  - `AudioManager.lua` — thin facade (<60 lines) that wires the above
+  - Audio event definitions go in `data/audio_events.lua`, not in system files
+
+### Required File Architecture Pattern
+```
+src/audio/
+  AudioManager.lua    -- <60 lines: facade, requires sub-managers
+  MusicManager.lua    -- music playback + crossfade
+  SFXManager.lua      -- sfx pool + trigger
+  AudioMixer.lua      -- volume channels
+src/data/
+  audio_events.lua    -- event name → sound file mapping, no logic
+```
+
+### When Implementing Any Feature
+1. **Before writing a single line** — identify which file(s) the logic belongs in.
+2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+3. **Sound file paths and event mappings must live in data files, not system code.**
+4. **Prefer 10 small focused files over 1 large file** every time.
+
+### Refactoring Triggers (do this proactively)
+- File exceeds 100 lines → split music from SFX from mixer
+- Sound path strings appear in logic code → move to data file
+- A function is longer than 30 lines → extract helper functions
+
 ## Implementation Guidelines
 
 ### Audio Manager Core

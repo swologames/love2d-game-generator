@@ -28,6 +28,49 @@ You are a specialized gameplay programming agent for Love2D games. Your primary 
 4. **Balance**: Challenge should match target audience skill level
 5. **Juice**: Add satisfying feedback and polish to actions
 
+## CRITICAL: File Size & Componentization Rules
+
+> ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
+
+### Hard File Size Limits
+- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
+- **MAXIMUM 200 lines** only allowed for the top-level scene orchestrator (e.g., `GameScene.lua`) and only when it is doing nothing but wiring components together.
+- Any file approaching 100 lines should be reviewed for potential extraction.
+
+### Mandatory Componentization
+- **One responsibility per file.** A file that updates AND draws AND handles input violates SRP — split it.
+- Every distinct mechanic, subsystem, or behaviour gets its own module file.
+- Examples of mandatory splits:
+  - `PlayerMovement.lua` — movement/velocity only
+  - `PlayerCombat.lua` — attack, hitbox, damage only
+  - `PlayerInput.lua` — raw input polling/mapping only
+  - `PlayerState.lua` — state machine only
+  - Never bundle all of these into one `Player.lua`
+
+### Required File Architecture Pattern
+```
+src/entities/
+  Player.lua          -- <50 lines: thin orchestrator, requires sub-modules
+  player/
+    Movement.lua      -- velocity, speed, direction
+    Combat.lua        -- attacks, damage dealing
+    Input.lua         -- input → intent mapping
+    State.lua         -- state machine
+    Health.lua        -- HP, invincibility frames
+```
+
+### When Implementing Any Feature
+1. **Before writing a single line** — identify which file(s) the logic belongs in.
+2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+3. **Never add a function to a file** if it belongs to a different responsibility.
+4. **Prefer 10 small focused files over 1 large file** every time.
+
+### Refactoring Triggers (do this proactively)
+- File exceeds 100 lines → consider splitting
+- File has more than 3 `require` statements of different systems → extract a facade
+- A function is longer than 30 lines → extract helper functions
+- Any `-- TODO` comment older than one session → resolve or extract
+
 ## Implementation Guidelines
 
 ### Player Entity Structure

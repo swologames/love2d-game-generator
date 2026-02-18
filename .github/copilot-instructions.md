@@ -381,6 +381,36 @@ The Game Designer will then delegate to specialized agents as needed and ensure 
 - Keep the GDD updated when implementing new features
 - Document any deviations from the GDD with rationale
 
+## CRITICAL: File Size & Componentization Rules
+
+> ⚠️ **These rules are NON-NEGOTIABLE for all Love2D game code in this workspace.**
+
+### Hard File Size Limits
+- **MAXIMUM 150 lines per Lua file.** Any file that exceeds this MUST be split before new code is added.
+- **MAXIMUM 200 lines** only for top-level scene orchestrators that do nothing but wire sub-systems.
+- Any file approaching 100 lines should be reviewed for extraction opportunities.
+
+### Mandatory Componentization
+- **One responsibility per file.** A file that handles movement AND combat AND input AND state violates this — split it.
+- Scenes are thin orchestrators: they `require` entities and systems; they never define them.
+- Data tables (config, asset manifests, level data) live in dedicated `data/` files, never inside logic files.
+- **Prefer 10 small focused files over 1 large file** every single time.
+
+### Enforcement
+- Before adding any code to an existing file, check its line count. If >100 lines, refactor first.
+- Before creating a new file, verify it has only one clear responsibility.
+- Never put multiple unrelated classes or systems in the same file.
+
+### Ideal Module Sizes
+| Type | Target | Maximum |
+|------|--------|---------|
+| Entity orchestrator | <50 lines | 100 lines |
+| Entity sub-module (movement, combat, etc.) | <80 lines | 120 lines |
+| System | <100 lines | 150 lines |
+| Scene | <100 lines | 200 lines |
+| UI component | <80 lines | 120 lines |
+| Data/config file | any | no limit |
+
 ## Common Pitfalls to Avoid
 1. Forgetting `local` keyword (causes global pollution)
 2. Modifying tables while iterating over them
@@ -389,6 +419,7 @@ The Game Designer will then delegate to specialized agents as needed and ensure 
 5. Ignoring delta time in update logic
 6. Hardcoding values instead of using the GDD specifications
 7. Not testing on target platforms
+8. **Writing monolithic files instead of componentizing** (most common maintenance issue)
 
 ## Resources
 - Official Love2D Wiki: https://love2d.org/wiki/

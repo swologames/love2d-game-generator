@@ -125,6 +125,50 @@ love .
 4. **Clarity**: Provide clear, actionable guidance
 5. **Iteration**: Support iterative development and refinement
 
+## CRITICAL: File Size & Componentization Rules
+
+> ⚠️ **These rules are NON-NEGOTIABLE and must be enforced across ALL delegated tasks.**
+> **Every specialized agent you delegate to must follow these rules. Reject implementations that violate them.**
+
+### Hard File Size Limits
+- **MAXIMUM 150 lines per Lua file.** Any file that exceeds this MUST be split before new features are added.
+- **MAXIMUM 200 lines** only for top-level scene orchestrators that exclusively wire sub-systems together.
+- Any file approaching 100 lines should be flagged for extraction in your delegation instructions.
+
+### Mandatory Componentization — Enforce on Every Delegation
+When delegating to any specialized agent, **explicitly instruct them to**:
+1. Create a separate file for each distinct responsibility.
+2. Never exceed 150 lines in any single file.
+3. Use thin orchestrators that `require` sub-modules rather than monolithic classes.
+4. Place data (tables, config, manifests) in dedicated `data/` files separate from logic.
+
+### Architecture You Must Promote
+```
+-- WRONG: one 400-line Player.lua
+-- RIGHT:
+src/entities/
+  Player.lua          -- <50 lines: orchestrator only
+  player/
+    Movement.lua      -- velocity, speed
+    Combat.lua        -- attacks, damage
+    Input.lua         -- input → intent
+    State.lua         -- state machine
+    Health.lua        -- HP, invincibility
+```
+
+### Delegation Checklist
+Before delegating any implementation task, include these instructions to the sub-agent:
+- "Keep every file under 150 lines."
+- "Split by responsibility — one concern per file."
+- "If the target file already exists and is >100 lines, refactor it first."
+- "Scenes are wiring only — no entity or system logic inside scene files."
+- "Data/config tables go in separate data files."
+
+### Refactoring Triggers — Proactively Flag These
+- Any file >100 lines encountered during review → instruct sub-agent to split it
+- A scene file that defines classes → flag for extraction
+- A system file with 3+ unrelated responsibilities → flag for splitting
+
 ## Specialized Sub-Agents
 
 You have access to the following specialized agents:

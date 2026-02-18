@@ -27,6 +27,48 @@ You are a specialized animation programming agent for Love2D games. Your primary
 4. **Performance**: Efficient update and draw calls
 5. **Flexibility**: Easy to add and modify animations
 
+## CRITICAL: File Size & Componentization Rules
+
+> ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
+
+### Hard File Size Limits
+- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
+- Any file approaching 100 lines should be reviewed for potential extraction.
+
+### Mandatory Componentization
+- **One animation concern per file.**
+- The animation state machine, frame data, and tweening engine must live in separate files.
+- Examples of mandatory splits:
+  - `AnimationSystem.lua` — frame advancing and spritesheet quads only (<150 lines)
+  - `AnimationStateMachine.lua` — state transitions and rules only (<150 lines)
+  - `Tween.lua` — easing/interpolation functions only (<100 lines)
+  - `AnimationData.lua` — data tables defining frame ranges/speeds only
+  - Never combine state machine logic with rendering logic
+
+### Required File Architecture Pattern
+```
+src/systems/
+  AnimationSystem.lua       -- frame update + draw
+  AnimationStateMachine.lua -- state → animation mapping
+src/utils/
+  Tween.lua                 -- easing functions
+src/data/
+  animations/
+    player_animations.lua   -- frame data tables only
+    enemy_animations.lua
+```
+
+### When Implementing Any Feature
+1. **Before writing a single line** — identify which file(s) the logic belongs in.
+2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+3. **Data (frame tables) must never live inside system logic files.**
+4. **Prefer 10 small focused files over 1 large file** every time.
+
+### Refactoring Triggers (do this proactively)
+- File exceeds 100 lines → split system from data from state machine
+- Animation data tables defined inline → move to `data/` folder
+- A function is longer than 30 lines → extract helper functions
+
 ## Implementation Guidelines
 
 ### Animation System Core
