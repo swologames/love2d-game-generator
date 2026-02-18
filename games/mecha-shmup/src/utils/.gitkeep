@@ -1,0 +1,13 @@
+# Utility Functions
+
+Helper functions and utilities.
+
+## Files to Create
+
+- **math.lua** - Math helpers (distance, angles, etc.)
+- **table.lua** - Table manipulation utilities
+- **timer.lua** - Timer/tween utilities
+- **easing.lua** - Easing functions
+- **input.lua** - Input handling utilities
+
+These can be created as needed during development!

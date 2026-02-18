@@ -1,0 +1,12 @@
+# Shaders
+
+GLSL shader source files.
+
+## Shaders to Create
+
+- **glow.glsl** - Glow effect for bullets and engines
+- **flash.glsl** - Flash effect for hit feedback
+- **waveDistortion.glsl** - Wave distortion for special attacks
+- **chromatic.glsl** - Chromatic aberration for impact
+
+Ask @graphics to implement shaders and visual effects!

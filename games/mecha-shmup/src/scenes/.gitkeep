@@ -1,0 +1,15 @@
+# Scenes
+
+Scene management for game flow and state transitions.
+
+## Files to Create
+
+- **SceneManager.lua** - Central scene manager
+- **MenuScene.lua** - Main menu scene
+- **GameScene.lua** - Main gameplay scene
+- **PauseScene.lua** - Pause menu overlay
+- **GameOverScene.lua** - Game over screen
+- **VictoryScene.lua** - Victory screen
+- **OptionsScene.lua** - Settings/options menu
+
+Ask @gameflow to implement the scene management system!

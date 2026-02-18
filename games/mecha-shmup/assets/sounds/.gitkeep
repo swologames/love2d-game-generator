@@ -1,0 +1,27 @@
+# Sound Effects
+
+Short sound effect files for game events.
+
+## Recommended Files
+
+### Player Sounds
+- player_shot.wav - Player firing sound
+- player_special.wav - Special weapon sound
+- player_hit.wav - Player taking damage
+
+### Enemy Sounds
+- enemy_shot.wav - Enemy firing sound
+- enemy_explode.wav - Enemy destruction
+- boss_warning.wav - Boss warning siren
+
+### UI Sounds
+- menu_select.wav - Menu selection
+- menu_confirm.wav - Confirm action
+- menu_back.wav - Back/cancel action
+
+### Gameplay Sounds
+- powerup_collect.wav - Collecting power-ups
+- explosion_small.wav - Small explosion
+- explosion_large.wav - Large explosion
+
+Use .ogg or .wav format. Ask @audio to integrate sounds!

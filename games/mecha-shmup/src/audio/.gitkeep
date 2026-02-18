@@ -1,0 +1,11 @@
+# Audio Manager
+
+Audio system and sound management.
+
+## Files to Create
+
+- **AudioManager.lua** - Central audio management
+- **MusicManager.lua** - Music playback with crossfading
+- **SoundPool.lua** - Sound effect pooling for performance
+
+Ask @audio to implement the audio system!

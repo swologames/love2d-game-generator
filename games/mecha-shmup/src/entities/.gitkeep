@@ -1,0 +1,14 @@
+# Entities
+
+Game objects and entity classes.
+
+## Files to Create
+
+- **Player.lua** - Player mecha entity
+- **Enemy.lua** - Base enemy class
+- **Bullet.lua** - Bullet/projectile entity
+- **PowerUp.lua** - Power-up collectibles
+- **Boss.lua** - Boss enemy class
+- **Explosion.lua** - Explosion effect entity
+
+Ask @gameplay to implement the player and enemy entities!

@@ -1,0 +1,13 @@
+# UI Components
+
+User interface elements and HUD.
+
+## Files to Create
+
+- **HUD.lua** - Heads-up display (health, score, lives)
+- **Button.lua** - Reusable button component
+- **Menu.lua** - Menu system
+- **HealthBar.lua** - Health display
+- **BossHealthBar.lua** - Boss health display
+
+Ask @ui to implement all UI components and menus!

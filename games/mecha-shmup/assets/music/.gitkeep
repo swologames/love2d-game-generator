@@ -1,0 +1,16 @@
+# Music
+
+Background music tracks for different scenes.
+
+## Recommended Files
+
+- menu_theme.ogg - Main menu background music
+- stage1_theme.ogg - Stage 1 music
+- stage2_theme.ogg - Stage 2 music
+- boss_theme.ogg - Boss battle music
+- victory_jingle.ogg - Stage clear/victory music
+- gameover.ogg - Game over music
+
+Use .ogg format for best compression. Ensure tracks loop seamlessly!
+
+Ask @audio to implement music playback and crossfading!

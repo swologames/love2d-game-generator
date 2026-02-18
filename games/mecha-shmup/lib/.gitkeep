@@ -1,0 +1,14 @@
+# External Libraries
+
+Place any external Lua libraries or dependencies here.
+
+## Common Shmup Libraries
+
+You might want to add:
+- Camera library (for screen shake)
+- Tween library (for smooth animations)
+- Input handling library
+
+**Most shmups can be built with pure Love2D!** Only add libraries if you need specific functionality.
+
+See the GDD Section 8.2 for approved dependencies.

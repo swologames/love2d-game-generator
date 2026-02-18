@@ -1,0 +1,28 @@
+# Images
+
+Sprite sheets, textures, and background images.
+
+## Recommended Files
+
+### Player Assets
+- player_ship.png - Player mecha sprite
+- player_bullets.png - Player projectiles
+- player_thrust.png - Engine thrust animation
+
+### Enemy Assets
+- enemy_small.png - Small enemies
+- enemy_medium.png - Medium enemies
+- enemy_large.png - Large enemies
+- boss_sprites.png - Boss sprites
+
+### Effects
+- explosions.png - Explosion sprite sheet
+- particles.png - Particle textures
+- powerups.png - Power-up sprites
+
+### Backgrounds
+- bg_stars.png - Starfield background
+- bg_nebula.png - Nebula layer
+- bg_planet.png - Planet graphics
+
+Place your sprite files here and ask @assets to load them!

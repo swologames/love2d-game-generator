@@ -1,0 +1,13 @@
+# Systems
+
+Core game systems and managers.
+
+## Files to Create
+
+- **CollisionSystem.lua** - Collision detection and resolution
+- **SpawnManager.lua** - Enemy and power-up spawning
+- **ScoreSystem.lua** - Score tracking and management
+- **ParticleSystem.lua** - Particle effects manager
+- **CameraShake.lua** - Screen shake effects
+
+Ask @physics for collision, @gameplay for spawning/scoring, @graphics for particles!

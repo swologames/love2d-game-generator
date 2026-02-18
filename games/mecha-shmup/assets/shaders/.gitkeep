@@ -1,0 +1,9 @@
+# Shader Files
+
+GLSL shader source files for visual effects.
+
+This folder houses the actual .glsl shader source files that will be loaded by the game.
+
+The Lua integration code should live in `/src/shaders/`.
+
+Place your compiled shader files here (e.g., glow.glsl, flash.glsl).

@@ -1,0 +1,23 @@
+# Fonts
+
+Font files for UI text and HUD.
+
+## Recommended Fonts
+
+For a shmup/sci-fi game, consider:
+- Monospace fonts (good for scores)
+- Futuristic/tech fonts for titles
+- Clear, readable fonts for UI text
+
+## Files
+
+Place your .ttf or .otf font files here.
+
+Examples:
+- game_font.ttf - Main game font
+- title_font.ttf - Title/logo font
+- mono_font.ttf - Monospace for scores
+
+**License reminder**: Only use fonts you have permission to use!
+
+Ask @ui to load and use fonts in the interface!
