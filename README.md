@@ -1,4 +1,4 @@
-# Love2D AI Game Generator
+# Love2D AI Game Generator - A Work In Progress
 
 This repository contains specialized Copilot agent definitions for building Love2D games based on a Game Design Document (GDD). Each agent is an expert in a specific domain of game development.
 
