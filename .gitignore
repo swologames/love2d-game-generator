@@ -1,0 +1,6 @@
+# Avoid storing audio files in the repository, as they are large and can be generated or added by users.
+**/*.wav
+**/*.mp3
+**/*.ogg
+**/*.flac
+ 
