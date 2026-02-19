@@ -14,29 +14,40 @@ local AudioSystem = {
   fadeOutMusic = nil
 }
 
+-- Safely load an audio source; logs a warning and returns nil on failure.
+local function tryLoad(path, sourceType)
+  local ok, result = pcall(love.audio.newSource, path, sourceType)
+  if ok then
+    return result
+  else
+    print("[AudioSystem] WARNING: could not load '" .. path .. "': " .. tostring(result))
+    return nil
+  end
+end
+
 -- Initialize audio system
 function AudioSystem:init()
-  -- Load all music
-  self.music.menu = love.audio.newSource("assets/music/menu.wav", "stream")
-  self.music.level1 = love.audio.newSource("assets/music/level1.wav", "stream")
-  self.music.level2 = love.audio.newSource("assets/music/level2.wav", "stream")
-  self.music.boss_fight = love.audio.newSource("assets/music/boss_fight.wav", "stream")
-  
-  -- Set all music to loop
+  -- Load all music (missing files are skipped with a log)
+  self.music.menu       = tryLoad("assets/music/menu.wav",       "stream")
+  self.music.level1     = tryLoad("assets/music/level1.wav",     "stream")
+  self.music.level2     = tryLoad("assets/music/level2.wav",     "stream")
+  self.music.boss_fight = tryLoad("assets/music/boss_fight.wav", "stream")
+
+  -- Set all successfully loaded tracks to loop
   for _, music in pairs(self.music) do
-    music:setLooping(true)
+    if music then music:setLooping(true) end
   end
-  
-  -- Load all sound effects
-  self.sounds.click_long = love.audio.newSource("assets/sounds/click_long.wav", "static")
-  self.sounds.click_short = love.audio.newSource("assets/sounds/click_short.wav", "static")
-  self.sounds.game_over = love.audio.newSource("assets/sounds/game_over.wav", "static")
-  self.sounds.start_chime = love.audio.newSource("assets/sounds/start_chime.wav", "static")
-  
+
+  -- Load all sound effects (missing files are skipped with a log)
+  self.sounds.click_long  = tryLoad("assets/sounds/click_long.wav",  "static")
+  self.sounds.click_short = tryLoad("assets/sounds/click_short.wav", "static")
+  self.sounds.game_over   = tryLoad("assets/sounds/game_over.wav",   "static")
+  self.sounds.start_chime = tryLoad("assets/sounds/start_chime.wav", "static")
+
   -- Apply initial volumes
   self:updateVolumes()
-  
-  print("Audio system initialized")
+
+  print("[AudioSystem] Initialized")
 end
 
 -- Update audio system (handles fading)
