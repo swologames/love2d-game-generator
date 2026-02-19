@@ -377,24 +377,6 @@ This will involve @audio for sound and @graphics for the flash effect.
    
    Final touches across all systems
 
-## 🔧 Technical Details
-
-### Love2D Version
-- Target: Love2D 11.4+ (unless specified in GDD)
-- Language: Lua 5.1/LuaJIT
-
-### Code Style
-- 2-space indentation
-- `camelCase` for variables and functions
-- `PascalCase` for classes/modules
-- Clear comments for complex logic
-
-### Performance
-- Target 60 FPS
-- Use sprite batching for repeated sprites
-- Object pooling for frequently created/destroyed objects
-- Profile regularly
-
 ## 📚 Resources
 
 - [Love2D Official Wiki](https://love2d.org/wiki/)
