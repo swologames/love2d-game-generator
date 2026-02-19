@@ -1,36 +1,12 @@
-# Love2D Game Development - Agent Guide
+# Love2D AI Game Generator
 
 This repository contains specialized Copilot agent definitions for building Love2D games based on a Game Design Document (GDD). Each agent is an expert in a specific domain of game development.
 
-## � Multi-Game Workspace
+See [games folder](./games) for example games created with a little iteration.
 
-**This workspace supports multiple independent Love2D games**, each in its own folder under `games/`. Every game is a complete, runnable Love2D project with its own Game Design Document.
+## 🎯 Quick Start
 
-**Workspace Structure:**
-```
-games/
-├── my-platformer/              # Your first game
-│   ├── GAME_DESIGN.md          # Game-specific GDD
-│   ├── main.lua                # Love2D entry point
-│   ├── conf.lua                # Configuration
-│   ├── /src                    # Game source code
-│   └── /assets                 # Game assets
-├── space-shooter/              # Another game
-│   ├── GAME_DESIGN.md
-│   └── ...
-```
-
-**Benefits:**
-- Work on multiple game projects in one workspace
-- Each game is completely independent
-- No shared code between games (clean separation)
-- Easy to run any game: `cd games/[game-name] && love .`
-
-📖 **See [games/README.md](games/README.md) for detailed multi-game workflows**
-
-## �🎯 Quick Start
-
-**New to this system?** Start here:
+**New to this system?** Clone the repo and start here:
 
 ### Creating a New Game
 
@@ -76,6 +52,33 @@ The Game Designer will analyze your GDD, break down the work, and coordinate the
 - The agent infers context from your open file!
 
 📖 **[Read the Quick Start Guide](QUICK_START.md)** for a complete walkthrough with examples!
+
+## � Multi-Game Workspace
+
+**This workspace supports multiple independent Love2D games**, each in its own folder under `games/`. Every game is a complete, runnable Love2D project with its own Game Design Document.
+
+**Workspace Structure:**
+```
+games/
+├── my-platformer/              # Your first game
+│   ├── GAME_DESIGN.md          # Game-specific GDD
+│   ├── main.lua                # Love2D entry point
+│   ├── conf.lua                # Configuration
+│   ├── /src                    # Game source code
+│   └── /assets                 # Game assets
+├── space-shooter/              # Another game
+│   ├── GAME_DESIGN.md
+│   └── ...
+```
+
+**Benefits:**
+- Work on multiple game projects in one workspace
+- Each game is completely independent
+- No shared code between games (clean separation)
+- Easy to run any game: `cd games/[game-name] && love .`
+
+📖 **See [games/README.md](games/README.md) for detailed multi-game workflows**
+
 
 ## 📋 Game Design Document Template
 
