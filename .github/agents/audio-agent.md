@@ -32,8 +32,8 @@ You are a specialized audio programming agent for Love2D games. Your primary foc
 > ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
 
 ### Hard File Size Limits
-- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
-- Any file approaching 100 lines should be reviewed for potential extraction.
+- **MAXIMUM 300 lines per Lua file.** If a file exceeds this, it MUST be split.
+- Any file approaching 250 lines should be reviewed for potential extraction.
 
 ### Mandatory Componentization
 - **One audio concern per file.** Music playback and SFX pooling are different responsibilities.
@@ -57,12 +57,12 @@ src/data/
 
 ### When Implementing Any Feature
 1. **Before writing a single line** — identify which file(s) the logic belongs in.
-2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+2. **If the target file is already >250 lines** — extract existing code into sub-modules first, THEN add the feature.
 3. **Sound file paths and event mappings must live in data files, not system code.**
 4. **Prefer 10 small focused files over 1 large file** every time.
 
 ### Refactoring Triggers (do this proactively)
-- File exceeds 100 lines → split music from SFX from mixer
+- File exceeds 250 lines → split music from SFX from mixer
 - Sound path strings appear in logic code → move to data file
 - A function is longer than 30 lines → extract helper functions
 

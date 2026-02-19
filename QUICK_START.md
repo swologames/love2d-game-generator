@@ -9,9 +9,9 @@ This workspace supports **multiple independent game projects**. Each game lives 
 - Run any game: `cd games/[game-name] && love .`
 - Each game is completely independent
 
-## 🚀 Getting Started in 3 Steps
+## 🚀 Getting Started in 4 Steps
 
-### Step 0: Create Your Game Project
+### Step 1: Create Your Game Project
 
 Start by creating a new game in the workspace:
 
@@ -25,7 +25,7 @@ The Game Designer will:
 - ✅ Generate `main.lua`, `conf.lua`, and all folders
 - ✅ Set you up to start developing
 
-### Step 1: Define Your Game (15-30 minutes)
+### Step 2: Define Your Game (15-30 minutes)
 Open and fill out: `games/my-platformer/GAME_DESIGN.md`
 
 **Minimum Required Sections**:
@@ -35,7 +35,7 @@ Open and fill out: `games/my-platformer/GAME_DESIGN.md`
 
 **You can fill in technical details later!** Start with your vision.
 
-### Step 2: Talk to the Game Designer
+### Step 3: Talk to the Game Designer
 Once your GDD has the basics, start a conversation:
 
 ```
@@ -56,7 +56,7 @@ The Game Designer will:
 - ✅ Coordinate the specialized agents
 - ✅ Guide you phase by phase
 
-### Step 3: Iterate and Build
+### Step 4: Iterate and Build
 Continue working with the Game Designer or specialized agents:
 
 ```

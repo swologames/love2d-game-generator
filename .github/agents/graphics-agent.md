@@ -32,15 +32,15 @@ You are a specialized graphics and shader programming agent for Love2D games. Yo
 > ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
 
 ### Hard File Size Limits
-- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
+- **MAXIMUM 300 lines per Lua file.** If a file exceeds this, it MUST be split.
 - GLSL shader files are exempt but should be kept focused (one effect per `.glsl` file).
-- Any file approaching 100 lines should be reviewed for potential extraction.
+- Any file approaching 250 lines should be reviewed for potential extraction.
 
 ### Mandatory Componentization
 - **One visual effect per file.** Particle systems, shaders, and screen effects are separate modules.
 - Examples of mandatory splits:
   - `ParticleSystem.lua` — emitter logic for ONE effect type; use a `ParticleManager.lua` facade
-  - `ShaderSystem.lua` — shader loading/uniform setting only (<100 lines)
+  - `ShaderSystem.lua` — shader loading/uniform setting only (<250 lines)
   - `ScreenShake.lua` — screen shake only
   - `CameraSystem.lua` — camera follow/zoom only
   - `shaders/crt.glsl`, `shaders/bloom.glsl` — one effect per shader file
@@ -61,12 +61,12 @@ src/shaders/
 
 ### When Implementing Any Feature
 1. **Before writing a single line** — identify which file(s) the logic belongs in.
-2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+2. **If the target file is already >250 lines** — extract existing code into sub-modules first, THEN add the feature.
 3. **Each `.glsl` file must implement exactly one effect.**
 4. **Prefer 10 small focused files over 1 large file** every time.
 
 ### Refactoring Triggers (do this proactively)
-- File exceeds 100 lines → split by effect type
+- File exceeds 250 lines → split by effect type
 - Multiple unrelated particle configs in one file → split into effect-specific files
 - A function is longer than 30 lines → extract helper functions
 

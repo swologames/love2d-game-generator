@@ -32,8 +32,8 @@ You are a specialized physics programming agent for Love2D games. Your primary f
 > ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
 
 ### Hard File Size Limits
-- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
-- Any file approaching 100 lines should be reviewed for potential extraction.
+- **MAXIMUM 300 lines per Lua file.** If a file exceeds this, it MUST be split.
+- Any file approaching 250 lines should be reviewed for potential extraction.
 
 ### Mandatory Componentization
 - **One physics concern per file.** Collision detection, physics simulation, and spatial partitioning are separate responsibilities.
@@ -58,12 +58,12 @@ src/entities/
 
 ### When Implementing Any Feature
 1. **Before writing a single line** — identify which file(s) the logic belongs in.
-2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+2. **If the target file is already >250 lines** — extract existing code into sub-modules first, THEN add the feature.
 3. **Collision response logic must never live inside entity files** — it belongs in `CollisionSystem.lua`.
 4. **Prefer 10 small focused files over 1 large file** every time.
 
 ### Refactoring Triggers (do this proactively)
-- File exceeds 100 lines → split collision from physics body from triggers
+- File exceeds 250 lines → split collision from physics body from triggers
 - Entity files contain collision math → move to CollisionSystem
 - A function is longer than 30 lines → extract helper functions
 

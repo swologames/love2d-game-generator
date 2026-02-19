@@ -33,9 +33,9 @@ You are a specialized gameplay programming agent for Love2D games. Your primary 
 > ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
 
 ### Hard File Size Limits
-- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
-- **MAXIMUM 200 lines** only allowed for the top-level scene orchestrator (e.g., `GameScene.lua`) and only when it is doing nothing but wiring components together.
-- Any file approaching 100 lines should be reviewed for potential extraction.
+- **MAXIMUM 300 lines per Lua file.** If a file exceeds this, it MUST be split.
+- **MAXIMUM 500 lines** only allowed for the top-level scene orchestrator (e.g., `GameScene.lua`) and only when it is doing nothing but wiring components together.
+- Any file approaching 250 lines should be reviewed for potential extraction.
 
 ### Mandatory Componentization
 - **One responsibility per file.** A file that updates AND draws AND handles input violates SRP — split it.
@@ -61,12 +61,12 @@ src/entities/
 
 ### When Implementing Any Feature
 1. **Before writing a single line** — identify which file(s) the logic belongs in.
-2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+2. **If the target file is already >250 lines** — extract existing code into sub-modules first, THEN add the feature.
 3. **Never add a function to a file** if it belongs to a different responsibility.
 4. **Prefer 10 small focused files over 1 large file** every time.
 
 ### Refactoring Triggers (do this proactively)
-- File exceeds 100 lines → consider splitting
+- File exceeds 250 lines → consider splitting
 - File has more than 3 `require` statements of different systems → extract a facade
 - A function is longer than 30 lines → extract helper functions
 - Any `-- TODO` comment older than one session → resolve or extract

@@ -30,9 +30,9 @@ You are a specialized UI development agent for Love2D games. Your primary focus 
 > ⚠️ **These rules are NON-NEGOTIABLE. Violation results in unmaintainable code.**
 
 ### Hard File Size Limits
-- **MAXIMUM 150 lines per Lua file.** If a file exceeds this, it MUST be split.
-- **MAXIMUM 200 lines** only allowed for top-level scene/menu orchestrators and only when doing nothing but wiring components together.
-- Any file approaching 100 lines should be reviewed for potential extraction.
+- **MAXIMUM 300 lines per Lua file.** If a file exceeds this, it MUST be split.
+- **MAXIMUM 500 lines** only allowed for top-level scene/menu orchestrators and only when doing nothing but wiring components together.
+- Any file approaching 250 lines should be reviewed for potential extraction.
 
 ### Mandatory Componentization
 - **One UI component per file.** `Button.lua`, `Slider.lua`, `HealthBar.lua` — never combine.
@@ -57,12 +57,12 @@ src/ui/
 
 ### When Implementing Any Feature
 1. **Before writing a single line** — identify which file(s) the logic belongs in.
-2. **If the target file is already >100 lines** — extract existing code into sub-modules first, THEN add the feature.
+2. **If the target file is already >250 lines** — extract existing code into sub-modules first, THEN add the feature.
 3. **Never add a component's logic into a parent menu/HUD file.**
 4. **Prefer 10 small focused files over 1 large file** every time.
 
 ### Refactoring Triggers (do this proactively)
-- File exceeds 100 lines → split into sub-components
+- File exceeds 250 lines → split into sub-components
 - A menu file contains drawing logic → extract to a component file
 - A function is longer than 30 lines → extract helper functions
 

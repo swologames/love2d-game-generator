@@ -386,9 +386,9 @@ The Game Designer will then delegate to specialized agents as needed and ensure 
 > ⚠️ **These rules are NON-NEGOTIABLE for all Love2D game code in this workspace.**
 
 ### Hard File Size Limits
-- **MAXIMUM 150 lines per Lua file.** Any file that exceeds this MUST be split before new code is added.
-- **MAXIMUM 200 lines** only for top-level scene orchestrators that do nothing but wire sub-systems.
-- Any file approaching 100 lines should be reviewed for extraction opportunities.
+- **MAXIMUM 300 lines per Lua file.** Any file that exceeds this MUST be split before new code is added.
+- **MAXIMUM 500 lines** only for top-level scene orchestrators that do nothing but wire sub-systems.
+- Any file approaching 250 lines should be reviewed for extraction opportunities.
 
 ### Mandatory Componentization
 - **One responsibility per file.** A file that handles movement AND combat AND input AND state violates this — split it.
@@ -397,18 +397,18 @@ The Game Designer will then delegate to specialized agents as needed and ensure 
 - **Prefer 10 small focused files over 1 large file** every single time.
 
 ### Enforcement
-- Before adding any code to an existing file, check its line count. If >100 lines, refactor first.
+- Before adding any code to an existing file, check its line count. If >250 lines, refactor first.
 - Before creating a new file, verify it has only one clear responsibility.
 - Never put multiple unrelated classes or systems in the same file.
 
 ### Ideal Module Sizes
 | Type | Target | Maximum |
 |------|--------|---------|
-| Entity orchestrator | <50 lines | 100 lines |
-| Entity sub-module (movement, combat, etc.) | <80 lines | 120 lines |
-| System | <100 lines | 150 lines |
-| Scene | <100 lines | 200 lines |
-| UI component | <80 lines | 120 lines |
+| Entity orchestrator | <150 lines | 250 lines |
+| Entity sub-module (movement, combat, etc.) | <200 lines | 300 lines |
+| System | <250 lines | 300 lines |
+| Scene | <300 lines | 500 lines |
+| UI component | <200 lines | 300 lines |
 | Data/config file | any | no limit |
 
 ## Common Pitfalls to Avoid
