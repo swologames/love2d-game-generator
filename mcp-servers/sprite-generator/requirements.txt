@@ -1,0 +1,20 @@
+# Core image processing
+Pillow>=10.0.0
+
+# Configuration
+PyYAML>=6.0
+
+# OpenAI provider
+openai>=1.0.0
+
+# Local Stable Diffusion provider
+torch>=2.0.0
+diffusers>=0.21.0
+transformers>=4.30.0
+accelerate>=0.20.0
+
+# Background removal
+rembg>=2.0.50
+
+# Optional: ControlNet support
+# controlnet-aux>=0.0.6

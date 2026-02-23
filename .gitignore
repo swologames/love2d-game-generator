@@ -4,3 +4,4 @@
 **/*.ogg
 **/*.flac
  
+ **/.DS_Store

@@ -1,0 +1,72 @@
+# Example Sprite Generation Manifest
+
+# This is an example manifest file for batch sprite generation.
+# Save this as a YAML file (e.g., sprites.yaml) and pass it to generate_sprite_batch
+
+# Basic sprite specifications
+sprites:
+  # Player character sprites
+  - name: player_idle
+    entity: player
+    action: idle
+    size: [64, 64]
+    style: pixel_art
+    view: side_view
+
+  - name: player_walk_1
+    entity: player
+    action: walk
+    size: [64, 64]
+
+  - name: player_walk_2
+    entity: player
+    action: walk
+    size: [64, 64]
+    
+  - name: player_jump
+    entity: player
+    action: jump
+    size: [64, 64]
+
+  - name: player_attack
+    entity: player
+    action: attack
+    size: [64, 64]
+  
+  # Enemy sprites
+  - name: enemy_grunt_idle
+    entity: enemy_grunt
+    action: idle
+    size: [48, 48]
+  
+  - name: enemy_grunt_walk
+    entity: enemy_grunt
+    action: walk
+    size: [48, 48]
+  
+  - name: enemy_boss_idle
+    entity: boss
+    action: idle
+    size: [128, 128]
+  
+  # Items and objects
+  - name: health_potion
+    entity: item
+    action: idle
+    size: [32, 32]
+    details: "glowing red potion bottle"
+  
+  - name: coin
+    entity: collectible
+    action: idle
+    size: [16, 16]
+    details: "golden spinning coin"
+
+# Field descriptions:
+# - name: Unique identifier for the sprite (becomes filename)
+# - entity: Type of entity (player, enemy, item, etc.)
+# - action: Pose/action (idle, walk, jump, attack, etc.)
+# - size: [width, height] in pixels (optional, uses defaults if not specified)
+# - style: Art style override (optional, uses GDD style if not specified)
+# - view: Camera angle (optional, defaults to side_view)
+# - details: Additional prompt details (optional)

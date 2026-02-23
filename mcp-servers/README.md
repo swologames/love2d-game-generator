@@ -17,6 +17,29 @@ Provides tools for counting lines in files to enforce the 300-line file size lim
 - Node.js: `line-counter/` (recommended)
 - Python: `line-counter-python/`
 
+### Sprite Generator
+
+AI-powered sprite and spritesheet generation for Love2D games. Supports both local Stable Diffusion and hosted APIs (DALL-E).
+
+**Tools:**
+- `generate_sprite` - Generate a single game sprite with AI
+- `generate_sprite_batch` - Generate multiple sprites from YAML manifest
+- `generate_spritesheet` - Generate and pack sprites into optimized spritesheet
+- `generate_animation_frames` - Generate animation frame sequences
+- `list_generated_sprites` - List all generated sprites for a game
+- `get_gdd_art_style` - Extract art style from GAME_DESIGN.md
+
+**Features:**
+- GDD-aware for style consistency
+- Background removal and post-processing
+- Power-of-2 spritesheet packing
+- Love2D Lua atlas generation
+- Both local (free) and API (paid) generation
+
+**Location:** `sprite-generator/`
+
+See [sprite-generator/README.md](sprite-generator/README.md) for detailed setup and usage.
+
 ## Quick Setup
 
 ### Python Version (Recommended - Zero Dependencies!)

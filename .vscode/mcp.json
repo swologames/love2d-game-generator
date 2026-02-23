@@ -4,6 +4,10 @@
          "command": "python3",
          "args": ["mcp-servers/line-counter-python/server.py"]
        },
+        "sprite-generator": {
+          "command": "python3",
+          "args": ["mcp-servers/sprite-generator/server.py"]
+        },
        "options": {
         "cwd": "${workspaceFolder}"
        }

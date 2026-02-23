@@ -155,6 +155,97 @@ count_multiple_files with filePaths ["src/scenes/GameScene.lua", "src/entities/P
 
 Gets statistics for all files in one call.
 
+---
+
+## Sprite Generator Setup
+
+The Sprite Generator MCP server provides AI-powered sprite generation for Love2D games.
+
+### Step 1: Install Dependencies
+
+```bash
+cd mcp-servers/sprite-generator
+pip3 install -r requirements.txt
+```
+
+**Note:** This includes image processing libraries and AI model dependencies. Install will take 2-5 minutes.
+
+For Apple Silicon Macs, PyTorch should auto-detect MPS support. If you encounter issues:
+
+```bash
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+```
+
+### Step 2: Configure API Keys (Optional)
+
+If you want to use OpenAI DALL-E in addition to local Stable Diffusion:
+
+```bash
+export OPENAI_API_KEY="sk-..."
+```
+
+Or add to `mcp-servers/sprite-generator/config.yaml`:
+
+```yaml
+providers:
+  openai:
+    api_key: "sk-..."
+```
+
+### Step 3: Make Server Executable
+
+```bash
+chmod +x mcp-servers/sprite-generator/server.py
+```
+
+### Step 4: Add to Claude Desktop Config
+
+Update `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "line-counter": {
+      "command": "python3",
+      "args": ["/Users/diegopinate/Documents/Love2DAI/mcp-servers/line-counter-python/server.py"]
+    },
+    "sprite-generator": {
+      "command": "python3",
+      "args": ["/Users/diegopinate/Documents/Love2DAI/mcp-servers/sprite-generator/server.py"]
+    }
+  }
+}
+```
+
+**Important:** Use absolute paths for both servers.
+
+### Step 5: Restart Claude Desktop
+
+Completely quit and restart Claude Desktop.
+
+### Step 6: Test
+
+Ask an AI agent:
+
+```
+Generate a pixel art player idle sprite for mecha-shmup using local SD
+```
+
+First generation will download the Stable Diffusion model (~4GB) to `~/.cache/huggingface/`. This is a one-time download.
+
+### Configuration
+
+Edit `mcp-servers/sprite-generator/config.yaml` to:
+
+- Switch default provider between local_sd and openai
+- Adjust generation quality settings
+- Enable/disable post-processing steps
+- Change model paths
+
+See [sprite-generator/README.md](sprite-generator/README.md) for full configuration options.
+
+---
+
 ## Troubleshooting
 
 ### Server not appearing in Claude Desktop
@@ -174,6 +265,44 @@ Gets statistics for all files in one call.
 ```bash
 chmod +x mcp-servers/line-counter/index.js
 ```
+
+### Sprite Generator Issues
+
+**Models not downloading:**
+```bash
+# Check internet connection and disk space (~4GB needed)
+# Or manually download:
+huggingface-cli login
+huggingface-cli download runwayml/stable-diffusion-v1-5
+```
+
+**Out of memory on Mac:**
+Edit `config.yaml`:
+```yaml
+defaults:
+  size: [256, 256]  # Smaller sprites
+providers:
+  local_sd:
+    device: "cpu"  # Force CPU if MPS fails
+    torch_dtype: "float32"
+```
+
+**Background removal fails:**
+```bash
+pip install rembg --no-deps
+pip install onnxruntime Pillow
+```
+
+Or disable in `config.yaml`:
+```yaml
+postprocess:
+  remove_background: false
+```
+
+**OpenAI rate limits:**
+- Switch to local_sd in config
+- Add delays between batch generations
+- Or upgrade OpenAI plan
 
 ## Integration with AI Workflows
 

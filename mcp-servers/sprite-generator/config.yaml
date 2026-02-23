@@ -1,0 +1,43 @@
+# Sprite Generator MCP Server Configuration
+
+# Provider Settings
+providers:
+  # OpenAI DALL-E provider
+  openai:
+    enabled: false
+    api_key: null  # Set via OPENAI_API_KEY env var or fill here
+    model: "dall-e-3"
+    quality: "standard"  # standard or hd
+    
+  # Local Stable Diffusion provider
+  local_sd:
+    enabled: true
+    model_path: "runwayml/stable-diffusion-v1-5"  # HuggingFace model ID or local path
+    device: "cpu"  # mps (Apple Silicon), cuda (NVIDIA), or cpu
+    torch_dtype: "float32"  # float16 or float32
+    use_safetensors: true
+    cache_dir: "~/.cache/huggingface"
+
+# Default Generation Parameters
+defaults:
+  provider: "local_sd"  # Default provider: openai or local_sd
+  size: [512, 512]  # Default sprite size [width, height]
+  steps: 30  # Inference steps for SD (ignored by DALL-E)
+  guidance_scale: 7.5  # Guidance scale for SD
+  negative_prompt: "watermark, text, signature, blurry, low quality, artifacts"
+  
+# Post-Processing Settings
+postprocess:
+  remove_background: false
+  normalize_size: true
+  sharpen: true
+  color_quantize: false  # Set to integer (e.g., 16) to reduce to palette
+  
+# Workspace Paths
+paths:
+  workspace_root: "/Users/diegopinate/Documents/Love2DAI"
+  
+# Performance Settings
+performance:
+  batch_size: 1  # Number of images to generate simultaneously
+  cache_models: true  # Keep models in memory between generations
