@@ -1,0 +1,11 @@
+   {
+     "servers": {
+       "line-counter": {
+         "command": "python3",
+         "args": ["mcp-servers/line-counter-python/server.py"]
+       },
+       "options": {
+        "cwd": "${workspaceFolder}"
+       }
+     }
+   }

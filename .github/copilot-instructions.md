@@ -386,7 +386,7 @@ The Game Designer will then delegate to specialized agents as needed and ensure 
 > ⚠️ **These rules are NON-NEGOTIABLE for all Love2D game code in this workspace.**
 
 ### Hard File Size Limits
-- **MAXIMUM 300 lines per Lua file.** Any file that exceeds this MUST be split before new code is added.
+- **MAXIMUM 400 lines per Lua file.** Any file that exceeds this MUST be split before new code is added.
 - **MAXIMUM 500 lines** only for top-level scene orchestrators that do nothing but wire sub-systems.
 - Any file approaching 250 lines should be reviewed for extraction opportunities.
 
